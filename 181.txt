@@ -1,0 +1,14 @@
+#Approch 1
+select e1.Name as Employee 
+from Employee e1, Employee e2
+where (e1.ManagerId = e2.Id) and (e1.Salary > e2.Salary)
+
+#Approch 2
+SELECT
+     a.NAME AS Employee
+FROM Employee AS a JOIN Employee AS b
+     ON a.ManagerId = b.Id
+     AND a.Salary > b.Salary
+     
+
+A2 is more effcient than A1.
