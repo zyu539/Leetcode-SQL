@@ -1,0 +1,4 @@
+#Note 1: Use "update table set col = value where ..." to update table.
+#Note 2: Use CHAR() and ASCII to convert between ascii code and char.
+
+update salary set sex = CHAR(ASCII('f') ^ ASCII('m') ^ ASCII(sex));
