@@ -1,0 +1,16 @@
+#Approach 1(beat 52%)
+
+select customers.name as 'Customers'
+from customers
+where customers.id not in
+(
+    select customerid from orders
+);
+
+#Approach 2(beat 23%)
+
+select Name as Customers from Customers c
+left join Orders o on c.Id = o.CustomerId
+where o.Id is null
+
+#A1 is better than A2
