@@ -1,0 +1,11 @@
+#Approach 1: Use max
+
+SELECT max(Salary) as SecondHighestSalary
+FROM Employee
+WHERE Salary < (SELECT max(Salary) FROM Employee)
+
+#Approach 2: Use min (wrong answer when there is only one entry in the table)
+select MIN(p.Salary) as SecondHighestSalary from
+(select Salary from Employee
+order by Salary desc
+limit 2) as p
