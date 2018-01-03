@@ -1,0 +1,15 @@
+#Use "UNION" operation is faster than using "OR"
+#when it comes to cases like scan two different column like this.
+#Reason is MySQL usually uses one one index per table in a given query, 
+#so when it uses the 1st index rather than 2nd index, 
+#it would still have to do a table-scan to find rows that fit the 2nd index.
+
+SELECT name, population, area
+FROM World
+WHERE area > 3000000 
+
+UNION
+
+SELECT name, population, area
+FROM World
+WHERE population > 25000000
