@@ -1,0 +1,17 @@
+#Approach 1 Use DATEDIFF (slow)
+
+SELECT
+    weather.id AS 'Id'
+FROM
+    weather
+        JOIN
+    weather w ON DATEDIFF(weather.date, w.date) = 1
+        AND weather.Temperature > w.Temperature;
+        
+
+#Approach 2 Use TO_DAYS (fast)
+
+SELECT wt1.Id 
+FROM Weather wt1, Weather wt2
+WHERE wt1.Temperature > wt2.Temperature AND 
+      TO_DAYS(wt1.DATE)-TO_DAYS(wt2.DATE)=1;
