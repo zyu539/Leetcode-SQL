@@ -1,0 +1,4 @@
+select distinct Num as ConsecutiveNums from
+(select Num, @c := if(@prev = (@prev := Num), @c + 1, 1) as tmp
+from Logs, (select @c := 0, @prev := (select Num from Logs limit 1)) as init) as tmp1
+where tmp1.tmp = 3
