@@ -1,0 +1,7 @@
+select 
+  Score, 
+  @r := @r + (@prev <> (@prev := Score)) Rank 
+from 
+  Scores, 
+  (select @r := 0, @prev := -1) init
+order by Score desc 
